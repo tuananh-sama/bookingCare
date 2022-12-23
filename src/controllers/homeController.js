@@ -1,4 +1,5 @@
 import db from '../models/index'
+import CRUDSevice from '../services/CRUDSevice';
 
 let getHomePage = async (req, res) => {
     try {
@@ -16,13 +17,24 @@ let getAboutPage = (req, res) => {
     return res.render('test/about.ejs');
 }
 
+let getCRUD = (req, res) => {
+    return res.render('crud.ejs');
+}
+
 // 1 object bao gio cung phai co key va IDBCursorWithValue
 // object: {
 //     key: '',
 //     value:''
 // }
 
+let postCRUD = async (req, res) => {
+    let message = await CRUDSevice.createNewUser(req.body);
+    console.log(message);
+    return res.send('post crud form server');
+}
 module.exports = {
     getHomePage: getHomePage,
     getAboutPage: getAboutPage,
+    getCRUD: getCRUD,
+    postCRUD: postCRUD,
 }

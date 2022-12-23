@@ -7,10 +7,8 @@ let initWebRoutes = (app) => {
     //rest api
     router.get('/', homeController.getHomePage);
     router.get('/about', homeController.getAboutPage);
-
-    // router.get('/trantuananh', (req, res) => {
-    //     return res.send('Hello world with trantuananh')
-    // });
+    router.get('/crud', homeController.getCRUD);
+    router.post('/post-crud', homeController.postCRUD);
 
     return app.use("/", router);
 }
